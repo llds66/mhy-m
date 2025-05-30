@@ -9,4 +9,4 @@
 ## 下载
 
 + [官网](https://mhymd.csx.pw)
-+ [GitHub Releases](https://mhymd.csx.pw)
++ [GitHub Releases](https://github.com/llds66/mhy-m/releases/tag/v0.1.0)
