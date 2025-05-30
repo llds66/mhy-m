@@ -21,7 +21,7 @@ async function getData(bool: boolean = false) {
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 4000)
 
-    const res = await fetch('http://llds.tech/data', {
+    const res = await fetch('https://llds.tech/data', {
       signal: controller.signal,
     })
 
