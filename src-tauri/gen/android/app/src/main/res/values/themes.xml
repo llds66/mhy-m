@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.mhym" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowLightStatusBar">true</item>
+        <!-- 设置状态栏背景颜色 -->
+        <item name="android:statusBarColor">@color/white</item>
+        <!-- 设置底部导航栏颜色 -->
+        <item name="android:navigationBarColor">@color/white</item>
+    </style>
+</resources>
