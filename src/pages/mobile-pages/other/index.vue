@@ -16,7 +16,6 @@ async function copyTextToClipboard(code: string) {
   }
   catch (err) {
     console.error('Failed to copy: ', err)
-    loadingStates.value[code] = false // 复制失败时也要恢复 loading 状态
   }
 }
 </script>
