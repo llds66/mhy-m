@@ -1,8 +1,24 @@
 <script setup lang="ts">
 import { motion } from 'motion-v'
 import { ref } from 'vue'
+import showToast from '@/common/composables/useToast'
 
 const isUpdate = ref(false)
+const isCopy = ref(false)
+async function copyTextToClipboard(code: string) {
+  try {
+    isCopy.value = true
+    await navigator.clipboard.writeText(code)
+    showToast('已复制', { duration: 2000 })
+    setTimeout(() => {
+      isCopy.value = false
+    }, 2000)
+  }
+  catch (err) {
+    console.error('Failed to copy: ', err)
+    loadingStates.value[code] = false // 复制失败时也要恢复 loading 状态
+  }
+}
 </script>
 
 <template>
@@ -38,7 +54,16 @@ const isUpdate = ref(false)
         class="item p-3 flex flex-2/3 flex-col gap-row-2 h-33 select-none"
       >
         <span class="text-sm font-bold text-center">反馈与交流</span>
-        <span class="text-sm">Q群：206011327</span>
+        <div class="flex gap-col-4 items-center">
+          <span class="text-sm">Q群：206011327</span>
+          <motion.div
+            :while-hover="{ scale: 1.1 }"
+            :while-press="{ scale: 0.9 }"
+            class="text-sm font-bold"
+            :class="isCopy ? 'i-iconamoon-check-light' : 'i-iconamoon-copy-light'"
+            @click="copyTextToClipboard('206011327')"
+          />
+        </div>
         <span class="text-sm">微群：暂无</span>
         <span class="text-sm">邮箱：lldsshun@163.com</span>
       </motion.div>
@@ -59,7 +84,7 @@ const isUpdate = ref(false)
     </motion.a>
 
     <div class="mt-10 p-x-2 flex">
-      <span class="text-sm text-stone-600">当前版本 V 0.1</span>
+      <span class="text-sm text-stone-600">当前版本 V 0.2.0</span>
       <div class="text-sm text-stone-600 flex flex flex-1 gap-col-2 items-center justify-end">
         <motion.div v-if="isUpdate" :while-press="{ scale: 0.9 }" class="flex-center gap-col-2">
           有新版本，前往下载
