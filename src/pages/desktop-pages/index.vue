@@ -1,5 +1,7 @@
 <script setup lang='ts'>
+import Btn from '@components/Btn.vue'
 import Code from '@components/Code.vue'
+import Event from '@components/Event.vue'
 import showToast from '@composables/useToast'
 import { onMounted, ref } from 'vue'
 
@@ -60,22 +62,11 @@ onMounted(() => {
   <div class="mx-auto flex h-screen container">
     <div class="mx-auto mt-10">
       <div class="flex-center gap-col-5">
-        <div>
-          <a
-            target="_blank" href="https://mhymd.csx.pw/"
-            class="p-2 rounded-md flex transition-colors duration-200 hover:bg-#f3f4f7"
-          >
-            <span class="text-sm">官网</span>
-          </a>
-        </div>
-        <div>
-          <a
-            target="_blank" href="https://github.com/llds66/mhy-m"
-            class="p-2 rounded-md flex transition-colors duration-200 hover:bg-#f3f4f7"
-          >
-            <div class="i-mingcute-github-line text-lg" />
-          </a>
-        </div>
+        <span class="text-sm">v0.2.0</span>
+        <Btn link="https://mhymd.csx.pw/" title="官网" />
+        <Btn link="https://github.com/llds66/mhy-m" icon="i-mingcute-github-line" />
+        <Btn link="https://qm.qq.com/q/RTW81z5CUK" icon="i-mingcute-qq-line" />
+        <Btn link="mailto:lldsshun@163.com" icon="i-mingcute-mail-line" />
       </div>
       <div class="m-y-5 flex-center md:m-y-10">
         <span class="text-2xl font-bold">米哈游兑换码</span>
@@ -91,9 +82,19 @@ onMounted(() => {
           :box-color="item.boxColor"
         />
       </div>
-      <div class="text-sm text-stone-600 flex-center flex-col gap-2 md:mt-20 md:flex-row md:gap-10">
-        <span>QQ群：2558496669</span>
-        <span>邮箱：lldsshun@163.com</span>
+
+      <div class="m-y-5 flex-center md:m-y-10">
+        <span class="text-2xl font-bold">近期活动</span>
+      </div>
+
+      <div class="flex-center flex-wrap gap-5">
+        <Event
+          game="绝区零"
+          avatar="/juequling.png"
+          title="绝区零2025生日会"
+          due-date="2025-06-07 19:30:00"
+          image="http://sx6mbttvl.hb-bkt.clouddn.com/hd1.png"
+        />
       </div>
     </div>
   </div>

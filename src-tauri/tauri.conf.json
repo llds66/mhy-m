@@ -13,10 +13,10 @@
     "windows": [
       {
         "title": "mhym",
-        "width": 800,
-        "height": 600,
-        "minWidth": 800,
-        "minHeight": 600,
+        "width": 1108,
+        "height": 756,
+        "minWidth": 1108,
+        "minHeight": 756,
         "devtools": true
       }
     ],
@@ -26,7 +26,7 @@
   },
   "bundle": {
     "active": true,
-    "targets": ["msi","nsis"],
+    "targets": ["msi"],
     "icon": [
       "icons/128.ico",
       "icons/256.ico",

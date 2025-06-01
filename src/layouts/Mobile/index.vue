@@ -12,6 +12,6 @@ import MainContainer from './components/MainContainer.vue'
 
 <style scoped>
 .bottom-tab{
-  --uno:'w-50% transform-translate-x--50% bottom-2 left-1/2 fixed';
+  --uno:'w-70% transform-translate-x--50% bottom-2 left-1/2 fixed';
 }
 </style>

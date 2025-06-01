@@ -16,6 +16,12 @@ export const mobileRoutes: Array<RouteRecordRaw> = [
         component: () => import('@pages/mobile-pages/home/index.vue'),
       },
       {
+        name: 'Event',
+        meta: { nav: true, navName: '活动', navIcon: 'i-iconamoon-calendar-remove-light' },
+        path: 'event',
+        component: () => import('@pages/mobile-pages/event/index.vue'),
+      },
+      {
         name: 'Other',
         meta: { nav: true, navName: '其他', navIcon: 'i-iconamoon-home-light' },
         path: 'other',

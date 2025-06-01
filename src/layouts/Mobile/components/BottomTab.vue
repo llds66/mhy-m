@@ -15,6 +15,10 @@ const tabs = ref([
     icon: 'i-iconamoon-ticket-light',
   },
   {
+    path: '/event',
+    icon: 'i-iconamoon-calendar-remove-light',
+  },
+  {
     path: '/other',
     icon: 'i-iconamoon-attention-circle-light',
   },
