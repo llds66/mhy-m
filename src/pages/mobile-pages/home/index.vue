@@ -12,6 +12,19 @@ interface DataItem {
   codeArr: string[]
   boxColor: 'blue' | 'orange' | 'green'
 }
+interface EventItem {
+  id: number
+  game: string
+  avatar: string
+  title: string
+  dueDate: string
+  image: string
+}
+interface ApiResponse {
+  codes: DataItem[]
+  events: EventItem[]
+}
+
 const dataList = ref<DataItem[]>([])
 
 const loading = ref(false)
@@ -31,8 +44,8 @@ async function getData(bool: boolean = false) {
     if (!res.ok)
       throw new Error(`HTTP error! Status: ${res.status}`)
 
-    const data = await res.json()
-    dataList.value = data
+    const data: ApiResponse = await res.json()
+    dataList.value = data.codes
     if (bool) {
       showToast('刷新成功', { duration: 2000 })
     }

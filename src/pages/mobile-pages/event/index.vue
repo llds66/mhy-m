@@ -1,6 +1,64 @@
 <script setup lang='ts'>
 import Event from '@components/Event.vue'
+import showToast from '@composables/useToast'
 import { motion } from 'motion-v'
+import { onMounted, ref } from 'vue'
+
+interface DataItem {
+  version: string
+  name: string
+  avatar: string
+  dueDate: string
+  codeArr: string[]
+  boxColor: 'blue' | 'orange' | 'green'
+}
+interface EventItem {
+  id: number
+  game: string
+  avatar: string
+  title: string
+  dueDate: string
+  image: string
+}
+interface ApiResponse {
+  codes: DataItem[]
+  events: EventItem[]
+}
+
+const eventList = ref<EventItem[]>([])
+
+async function getData() {
+  try {
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 4000)
+
+    const res = await fetch('https://llds.tech/data', {
+      signal: controller.signal,
+    })
+
+    clearTimeout(timeoutId)
+
+    if (!res.ok)
+      throw new Error(`HTTP error! Status: ${res.status}`)
+
+    const data: ApiResponse = await res.json()
+    eventList.value = data.events
+    console.log('✅ 成功获取数据:', data)
+  }
+  catch (err: any) {
+    if (err.name === 'AbortError') {
+      console.error('❌ 请求超时')
+      showToast('请求超时', { duration: 2000 })
+    }
+    else {
+      showToast('请求失败', { duration: 2000 })
+      console.error('❌ 请求失败:', err)
+    }
+  }
+}
+onMounted(() => {
+  getData()
+})
 </script>
 
 <template>
@@ -21,11 +79,12 @@ import { motion } from 'motion-v'
     <div class="flex-center">
       <div class="flex flex-col gap-row-5 w-85% items-center justify-center">
         <Event
-          game="绝区零"
-          avatar="/juequling.png"
-          title="绝区零2025生日会"
-          due-date="2025-06-07 19:30:00"
-          image="http://sx6mbttvl.hb-bkt.clouddn.com/hd1.png"
+          v-for="item in eventList" :key="item.game"
+          :game="item.game"
+          :avatar="item.avatar"
+          :title="item.title"
+          :due-date="item.dueDate"
+          :image="item.image"
         />
       </div>
     </div>

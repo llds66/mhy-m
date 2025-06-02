@@ -13,7 +13,23 @@ interface DataItem {
   codeArr: string[]
   boxColor: 'blue' | 'orange' | 'green'
 }
+
+interface EventItem {
+  id: number
+  game: string
+  avatar: string
+  title: string
+  dueDate: string
+  image: string
+}
+
+interface ApiResponse {
+  codes: DataItem[]
+  events: EventItem[]
+}
+
 const dataList = ref<DataItem[]>([])
+const eventList = ref<EventItem[]>([])
 
 const loading = ref(false)
 async function getData(bool: boolean = false) {
@@ -32,8 +48,9 @@ async function getData(bool: boolean = false) {
     if (!res.ok)
       throw new Error(`HTTP error! Status: ${res.status}`)
 
-    const data = await res.json()
-    dataList.value = data
+    const data: ApiResponse = await res.json()
+    dataList.value = data.codes
+    eventList.value = data.events
     if (bool) {
       showToast('刷新成功', { duration: 2000 })
     }
@@ -53,6 +70,7 @@ async function getData(bool: boolean = false) {
     loading.value = false
   }
 }
+
 onMounted(() => {
   getData()
 })
@@ -89,11 +107,12 @@ onMounted(() => {
 
       <div class="flex-center flex-wrap gap-5">
         <Event
-          game="绝区零"
-          avatar="/juequling.png"
-          title="绝区零2025生日会"
-          due-date="2025-06-07 19:30:00"
-          image="http://sx6mbttvl.hb-bkt.clouddn.com/hd1.png"
+          v-for="item in eventList" :key="item.game"
+          :game="item.game"
+          :avatar="item.avatar"
+          :title="item.title"
+          :due-date="item.dueDate"
+          :image="item.image"
         />
       </div>
     </div>
