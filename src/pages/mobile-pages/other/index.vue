@@ -83,7 +83,7 @@ async function copyTextToClipboard(code: string) {
     </motion.a>
 
     <div class="mt-10 p-x-2 flex">
-      <span class="text-sm text-stone-600">当前版本 V 0.2.0</span>
+      <span class="text-sm text-stone-600">当前版本 V 0.3.0</span>
       <div class="text-sm text-stone-600 flex flex flex-1 gap-col-2 items-center justify-end">
         <motion.div v-if="isUpdate" :while-press="{ scale: 0.9 }" class="flex-center gap-col-2">
           有新版本，前往下载

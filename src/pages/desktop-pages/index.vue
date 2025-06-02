@@ -80,7 +80,7 @@ onMounted(() => {
   <div class="mx-auto flex h-screen container">
     <div class="mx-auto mt-10">
       <div class="flex-center gap-col-5">
-        <span class="text-sm">v0.2.0</span>
+        <span class="text-sm">v0.3.0</span>
         <Btn link="https://mhymd.csx.pw/" title="官网" />
         <Btn link="https://github.com/llds66/mhy-m" icon="i-mingcute-github-line" />
         <Btn link="https://qm.qq.com/q/RTW81z5CUK" icon="i-mingcute-qq-line" />
