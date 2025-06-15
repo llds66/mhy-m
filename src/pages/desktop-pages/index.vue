@@ -77,14 +77,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="mx-auto flex h-screen container">
+  <div class="mx-auto flex container">
     <div class="mx-auto mt-10">
       <div class="flex-center gap-col-5">
         <span class="text-sm">v0.3.0</span>
         <Btn link="https://mhymd.csx.pw/" title="官网" />
         <Btn link="https://github.com/llds66/mhy-m" icon="i-mingcute-github-line" />
-        <Btn link="https://qm.qq.com/q/RTW81z5CUK" icon="i-mingcute-qq-line" />
-        <Btn link="mailto:lldsshun@163.com" icon="i-mingcute-mail-line" />
       </div>
       <div class="m-y-5 flex-center md:m-y-10">
         <span class="text-2xl font-bold">米哈游兑换码</span>
@@ -106,14 +104,19 @@ onMounted(() => {
       </div>
 
       <div class="flex-center flex-wrap gap-5">
-        <Event
-          v-for="item in eventList" :key="item.game"
-          :game="item.game"
-          :avatar="item.avatar"
-          :title="item.title"
-          :due-date="item.dueDate"
-          :image="item.image"
-        />
+        <div v-if="eventList.length">
+          <Event
+            v-for="item in eventList" :key="item.game"
+            :game="item.game"
+            :avatar="item.avatar"
+            :title="item.title"
+            :due-date="item.dueDate"
+            :image="item.image"
+          />
+        </div>
+        <div v-else class="text-sm text-stone-500">
+          暂无数据
+        </div>
       </div>
     </div>
   </div>

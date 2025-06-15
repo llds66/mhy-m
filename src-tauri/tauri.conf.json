@@ -17,7 +17,8 @@
         "height": 756,
         "minWidth": 1108,
         "minHeight": 756,
-        "devtools": true
+        "devtools": true,
+        "decorations": false
       }
     ],
     "security": {
